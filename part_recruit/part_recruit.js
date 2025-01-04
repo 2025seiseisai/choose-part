@@ -51,15 +51,16 @@ const parts_data = [
     },
     {
         name: "校舎統括パート",
-        desc: "",
-        sections: [
-            {
-                name: "校舎統括パート",
-                desc: "校舎統括パート(いわゆる舎括)とは文化祭で必要な備品の貸し出し、部誌の印刷、備品移動の管理などをするパートです",
-                details: ["", "", "", ""],
-                status: { やりがい: 100, 友達: 90, 楽しさ: 70 },
-            },
-        ],
+        desc: "校舎統括パート(いわゆる舎括)とは文化祭で必要な備品の貸し出し、部誌の印刷、備品移動の管理などをするパートです",
+        sections: {
+            details: [
+                "全ての仕事がリモートワークで行われます｡夏休みに登校する必要がないです！また、PCを使ったデザインの作成･動画編集などを通じ､菁々祭だけで終わらない､将来にも役立つスキルをたくさん身につけることが出来ます。※このセクションでは、Adobeソフト(有料)の購入が必須になります。",
+                "パンフレットの制作、グッズのデザイン、X･Instagramで行われるカウントダウン企画の制作など、業務は多岐にわたります。",
+                "な　い　で　す　！ ぜひ､めいっぱい菁々祭を楽しんで下さい！！",
+                '菁々祭を"デザイン"したい人、夏休みは家から出たくないという人、ぜひ製作セクションへ！！',
+            ],
+            status: { やりがい: 100, 友達: 90, 楽しさ: 70 },
+        },
     },
 ];
 document.addEventListener("DOMContentLoaded", () => {
@@ -67,8 +68,9 @@ document.addEventListener("DOMContentLoaded", () => {
         "beforeend",
         `
 ${parts_data
-    .map(
-        ({ name, desc, sections }) => `
+    .map(({ name, desc, sections }) =>
+        Array.isArray(sections)
+            ? `
 <div class="part_container">
     <div class="part_box show_left">
         <h2 class="part_name">${name}</h2>
@@ -117,6 +119,41 @@ ${sections
     .join("")}
     </div>
 </div>
+`
+            : `
+<div class="part_container">
+    <div class="part_box show_left">
+        <div class="section_button" onclick="openAccordion(this)">
+            <div class="part_name_box">
+                <h2 class="part_name">${name}</h2>
+                <div class="section_arrow"></div>
+            </div>
+            <p class="part_desc">${desc}</p>
+        </div>
+        <div class="part_detail">
+            <h4 class="section_detail_title">パートの特徴</h4>
+            <p class="section_detail_desc">${sections.details[0]}</p>
+            <h4 class="section_detail_title">菁々祭当日までの仕事</h4>
+            <p class="section_detail_desc">${sections.details[1]}</p>
+            <h4 class="section_detail_title">当日の仕事</h4>
+            <p class="section_detail_desc">${sections.details[2]}</p>
+            <h4 class="section_detail_title">パートから一言</h4>
+            <p class="section_detail_desc">${sections.details[3]}</p>
+            <div class="section_status_container">
+                ${Object.entries(sections.status)
+                    .map(
+                        ([name, ratio]) => `
+<div class="section_status" style="--bar-width: ${ratio}%">
+    <h5 class="section_status_name">${name}</h5>
+    <div class="section_status_bar"><div class="section_status_inner_bar"></div></div>
+</div>
+`,
+                    )
+                    .join("")}
+            </div>
+        </div>
+    </div>
+</div>
 `,
     )
     .join("")}`,
@@ -155,6 +192,9 @@ ${sections
         observer.observe(element);
     });
     document.querySelectorAll(".section_branch").forEach((element) => {
+        observer.observe(element);
+    });
+    document.querySelectorAll(".foot_logo").forEach((element) => {
         observer.observe(element);
     });
 });

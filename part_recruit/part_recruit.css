@@ -575,7 +575,7 @@ header.hidden_header {
 }
 @media screen and (max-width: 767px) {
     .index_container {
-        width: calc(100% - 50px);
+        width: calc(100svw - 50px);
     }
     .desc_index {
         font-size: calc(var(--text-size) * 1.1);
@@ -595,6 +595,24 @@ header.hidden_header {
     }
     .desc_index_text1 {
         font-size: min(calc(var(--text-size) * 1.1), calc((100svw - 100px) / 12));
+    }
+    .deadline_container {
+        width: calc(100% - 50px);
+        flex-direction: column;
+    }
+    .deadline_day {
+        font-size: calc(var(--text-size) * 1.15);
+    }
+    .deadline_text {
+        font-size: calc(var(--text-size) * 0.7);
+    }
+    .deadline_box {
+        margin: 10px 2px 2px 19px;
+        width: auto;
+        height: auto;
+    }
+    .desc_index_text2 {
+        width: auto;
     }
 }
 footer {

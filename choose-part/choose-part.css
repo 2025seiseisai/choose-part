@@ -253,6 +253,9 @@ header.hidden_header {
 .part_container {
     width: calc(60svw + 50px);
 }
+.part_container_with_mergin {
+    margin-bottom: 30px;
+}
 .part_box {
     margin: 0 25px 0 25px;
     overflow: hidden;
@@ -336,6 +339,9 @@ header.hidden_header {
     padding: 10px 0 0 15px;
 }
 .section_name {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     font-weight: 700;
     font-size: 25px;
     transition: 0.5s;

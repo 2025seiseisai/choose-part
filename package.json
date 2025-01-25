@@ -1,0 +1,17 @@
+{
+    "name": "choose-part",
+    "version": "1.0.0",
+    "description": "",
+    "license": "ISC",
+    "author": "",
+    "type": "commonjs",
+    "main": "index.js",
+    "scripts": {
+        "test:chrome": "playwright test --headed --browser=chromium",
+        "test:firefox": "playwright test --headed --browser=firefox",
+        "test:safari": "playwright test --headed --browser=webkit"
+    },
+    "devDependencies": {
+        "@playwright/test": "^1.50.0"
+    }
+}

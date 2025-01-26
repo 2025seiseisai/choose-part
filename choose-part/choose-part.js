@@ -211,7 +211,7 @@ ${sections
     <div class="section_box show_right">
         <div class="section_button" onclick="openAccordion(this)">
             <div class="section_name_box">
-                <h3 class="section_name">${name}</h3>
+                <div class="section_name">${name}</div>
                 <div class="section_arrow"></div>
             </div>
             <p class="section_desc">${desc}</p>

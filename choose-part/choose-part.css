@@ -567,7 +567,7 @@ header.hidden_header {
 }
 @media screen and (max-width: 767px) {
     .index_container {
-        width: calc(100svw - 50px);
+        width: calc(100% - 50px);
     }
     .desc_index {
         font-size: calc(var(--text-size) * 1.1);
